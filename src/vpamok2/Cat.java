@@ -1,9 +1,13 @@
 package vpamok2;
 
 public abstract class Cat extends VirtPet {
-
-	public Cat(String nameParam, String descriptionParam, String typeParam, String speciesParam, int happinessParam) {
-		super(nameParam, descriptionParam, typeParam, speciesParam, happinessParam);
+	
+	public Cat(String nameParam, String descriptionParam){
+		super(nameParam, descriptionParam);
+	}
+	public Cat(String nameParam, String descriptionParam, String typeParam, String speciesParam,
+			int happinessParam, int hungerParam, int thirstParam, int wasteParam, int oilLevelParam, int chargeParam) {
+		super(nameParam, descriptionParam, typeParam, speciesParam, happinessParam, hungerParam, thirstParam, wasteParam, oilLevelParam, chargeParam);
 
 	}
 

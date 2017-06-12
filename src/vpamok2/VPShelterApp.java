@@ -10,19 +10,18 @@ public class VPShelterApp {
 													// shelter
 													// object
 		// create pet providing name, description, type and species
-		VirtPet albie = new VirtPet("Albie", "happy", "robotic", "dog");
-		VirtPet lewis = new VirtPet("Lewis", "nervous", "robotic", "cat");
-		VirtPet jax = new VirtPet("Jax", "shy", "organic", "cat");
-		VirtPet gonzo = new VirtPet("Gonzo", "loud", "organic", "dog");
+		VirtPet albie = new VirtPet("Albie", "happy", "robotic", "dog", 77, 0, 0, 0, 58, 87);
+		VirtPet lewis = new VirtPet("Lewis", "nervous", "robotic", "cat", 67, 0, 0, 0, 63, 59);
+		VirtPet jax = new VirtPet("Jax", "shy", "organic", "cat", 81, 87, 63, 66, 0, 0);
+		VirtPet gonzo = new VirtPet("Gonzo", "loud", "organic", "dog", 67, 85, 66, 75, 0, 0);
 		// adding the pets to the map
 		petShelter.intakeRoboticPets("Albie", albie);
 		petShelter.intakeRoboticPets("Lewis", lewis);
 		petShelter.intakeOrganicPets("Jax", jax);
 		petShelter.intakeOrganicPets("Gonzo", gonzo);
-		
 
 		writeLine(
-				"Welcome to John's Virtual Pet Shelter. Here are our current pets: \nName \tDescription \tType \tSpecies \tHappiness"
+				"Welcome to John's Virtual Pet Shelter. Here are our current pets: \nName \tDescription \tType \tSpecies \tHappiness \tHunger \tThirst \tWaste Level \tOil Level \tCharge"
 						+ albie + lewis + jax + gonzo);
 		boolean begin = false;
 		while (!begin) {// will allow the game to continue until the user
@@ -35,6 +34,7 @@ public class VPShelterApp {
 			case 1:
 				petShelter.feedPets();// feeds all pets
 				writeLine("The pets appreciate the grub!");
+				System.out.println(petShelter.petMap);
 				break;
 			case 2:
 				petShelter.waterPets();// waters all the pets
@@ -75,33 +75,36 @@ public class VPShelterApp {
 
 				}
 				String adoptName = input.nextLine();
-				//need to add petMaps like admit pet
+				// need to add petMaps like admit pet
 				VirtPet tempAdopt = petShelter.getPets(adoptName);// gets the
 																	// pet for
 																	// the user
 																	// to adopt
-				
+
 				petShelter.adoptPet(tempAdopt);// removes pet from map
 				writeLine("Thank you for adopting " + adoptName + ". We know you will be pleased with your selection.");
 
 				break;
 			case 5:// admit a pet
 				writeLine("Please provide us with the pet's name:");
-				String getPetName = input.nextLine();
+				String getPetName = input.next();
 				writeLine("Please provide us with a one word description of the pet's demeanor:");
 				String getPetDescription = input.next();
-				writeLine("Please provide the pets overall health/happiness on a scale of 1-100:");
-				int getPetHappiness=input.nextInt();
 				writeLine("Is this a robotic or organic pet?");
-				String getPetType = input.nextLine();
-				if (getPetType.equalsIgnoreCase("organic")) {//used to determine which map the input will be placed in
+				String getPetType = input.next();
+				if (getPetType.equalsIgnoreCase("organic")) {// used to
+																// determine
+																// which map the
+																// input will be
+																// placed in
 					writeLine("Is this a dog or cat?");
 					String getPetSpecies = input.nextLine();
 					if (getPetSpecies.equalsIgnoreCase("dog")) {
-						OrganicPet admitPets = new OrganicDog(getPetName, getPetDescription, getPetType, getPetSpecies, getPetHappiness);
+						OrganicPet admitPets = new OrganicDog(getPetName, getPetDescription);
+
 						petShelter.intakeOrganicPets(getPetName, (VirtPet) admitPets);
 					} else if (getPetSpecies.equalsIgnoreCase("cat")) {
-						OrganicPet admitPets = new OrganicCat(getPetName, getPetDescription, getPetType, getPetSpecies, getPetHappiness);
+						OrganicPet admitPets = new OrganicCat(getPetName, getPetDescription);
 						petShelter.intakeOrganicPets(getPetName, (VirtPet) admitPets);
 					}
 					// writeLine("We will try our best to find" + getPetName + "
@@ -111,16 +114,16 @@ public class VPShelterApp {
 					writeLine("Is this a dog or cat?");
 					String getPetSpecies = input.next();
 					if (getPetSpecies.equalsIgnoreCase("dog")) {
-						RoboticPet admitPets = new RoboticDog(getPetName, getPetDescription, getPetType, getPetSpecies, getPetHappiness);// creates
-																														// new
-																														// virtual
-																														// pet
-																														// with
-																														// user
-																														// input
+						RoboticPet admitPets = new RoboticDog(getPetName, getPetDescription);// creates
+																								// new
+																								// virtual
+																								// pet
+																								// with
+																								// user
+																								// input
 						petShelter.intakeRoboticPets(getPetName, (VirtPet) admitPets);
 					} else if (getPetSpecies.equalsIgnoreCase("cat")) {
-						RoboticPet admitPets = new RoboticCat(getPetName, getPetDescription, getPetType, getPetSpecies, getPetHappiness);
+						RoboticPet admitPets = new RoboticCat(getPetName, getPetDescription);
 						petShelter.intakeOrganicPets(getPetName, (VirtPet) admitPets);
 					} // adds the pet to the organic shelter map
 					writeLine("We will try our best to find " + getPetName + " a new home.");
@@ -155,14 +158,13 @@ public class VPShelterApp {
 				writeLine("That is not a valid entry");
 				continue;
 			}
-			
-				
-			}
-			petShelter.tickShelter();//adjust waste and happiness
-			System.out.println(petShelter.petMap);// prints shelter map
-	
-		}	
-	
+
+		}
+		petShelter.tickShelter();// adjust waste and happiness
+		System.out.println(petShelter.petMap);// prints shelter map
+		
+		
+	}
 
 	public static void writeLine(String message) {
 		System.out.println(message);

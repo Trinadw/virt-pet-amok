@@ -20,23 +20,25 @@ public class VirtPet {
 	}
 
 	public VirtPet(String nameParam, String descriptionParam, String typeParam, String speciesParam,
-			int happinessParam) {
+			int happinessParam, int hungerParam, int thirstParam, int wasteParam, int oilLevelParam, int chargeParam) {
 		name = nameParam;
 		description = descriptionParam;
 		type = typeParam;
 		species = speciesParam;
-		happiness = 70;
+		happiness = 60;
+		waste=50;
+	
+		
 	}
 
 	int getHappiness() {
 		return happiness;
 	}
 
-	public VirtPet(String nameParam, String descriptionParam, String typeParam, String speciesParam) {
+	public VirtPet(String nameParam, String descriptionParam) {
 		name = nameParam;
 		description = descriptionParam;
-		type = typeParam;
-		species = speciesParam;
+		
 	}
 
 	public String pet() {

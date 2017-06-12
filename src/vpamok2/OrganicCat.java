@@ -2,14 +2,17 @@ package vpamok2;
 
 public class OrganicCat extends Cat implements OrganicPet {
 	
-
-	public OrganicCat(String nameParam, String descriptionParam, String typeParam, String speciesParam, int happinessParam) {
-		super(nameParam, descriptionParam, typeParam, speciesParam, happinessParam);
+	public OrganicCat(String nameParam, String descriptionParam){
+		super(nameParam, descriptionParam);
+	}
+	public OrganicCat(String nameParam, String descriptionParam, String typeParam, String speciesParam,
+			int happinessParam, int hungerParam, int thirstParam, int wasteParam, int oilLevelParam, int chargeParam) {
+		super(nameParam, descriptionParam, typeParam, speciesParam, happinessParam, 60, 60, 50, 0, 0);
 
 	}
 
-	int hunger;
-	int thirst;
+	private int hunger;
+	private int thirst;
 	
 	int getThirst() {
 		return thirst;
