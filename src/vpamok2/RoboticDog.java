@@ -2,8 +2,8 @@ package vpamok2;
 
 public class RoboticDog extends Dog implements RoboticPet {
 
-	public RoboticDog(String nameParam, String descriptionParam, String typeParam, String speciesParam) {
-		super(nameParam, descriptionParam, typeParam, speciesParam);
+	public RoboticDog(String nameParam, String descriptionParam, String typeParam, String speciesParam, int happinessParam) {
+		super(nameParam, descriptionParam, typeParam, speciesParam, happinessParam);
 		
 	}
 int oilLevel;//used to increase/decrease. signify needs more

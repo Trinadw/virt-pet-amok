@@ -3,8 +3,8 @@ package vpamok2;
 public class OrganicDog extends Dog implements OrganicPet {
 	int hunger;
 	int thirst;
-	public OrganicDog(String nameParam, String descriptionParam, String typeParam, String speciesParam) {
-		super(nameParam, descriptionParam, typeParam, speciesParam);
+	public OrganicDog(String nameParam, String descriptionParam, String typeParam, String speciesParam, int happinessParam) {
+		super(nameParam, descriptionParam, typeParam, speciesParam, happinessParam);
 		
 	}
 	int getHunger() {

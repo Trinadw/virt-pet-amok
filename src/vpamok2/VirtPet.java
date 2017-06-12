@@ -4,24 +4,27 @@ import java.util.Random;
 
 public class VirtPet {
 	Random num = new Random();
-	String name;
+	protected String name;
 	// variables for my pet
 
-	String description;
-	int happiness;
-	String type;
-	String species;
+	protected String description;
+	protected int happiness;
+	protected String type;
+	protected String species;
+	protected int waste;
 
 	void tick() {
 		happiness -= num.nextInt(5);
+		waste -= num.nextInt(5);
 
 	}
 
-	public VirtPet(String nameParam, String descriptionParam, String typeParam, String speciesParam, int happinessParam) {
+	public VirtPet(String nameParam, String descriptionParam, String typeParam, String speciesParam,
+			int happinessParam) {
 		name = nameParam;
 		description = descriptionParam;
 		type = typeParam;
-		species=speciesParam;
+		species = speciesParam;
 		happiness = 70;
 	}
 
@@ -32,8 +35,8 @@ public class VirtPet {
 	public VirtPet(String nameParam, String descriptionParam, String typeParam, String speciesParam) {
 		name = nameParam;
 		description = descriptionParam;
-		type=typeParam;
-		species=speciesParam;
+		type = typeParam;
+		species = speciesParam;
 	}
 
 	public String pet() {
@@ -42,7 +45,7 @@ public class VirtPet {
 
 	@Override
 	public String toString() {
-		return "\n" + name + "\t" + description+"\t"+"\t"+type +"\t"+species;
+		return "\n" + name + "\t" + description + "\t" + "\t" + type + "\t" + species + "\t" + happiness;
 	}
 
 	public void play() {

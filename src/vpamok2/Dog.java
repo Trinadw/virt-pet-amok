@@ -1,19 +1,19 @@
 package vpamok2;
 
-public class Dog extends VirtPet {
+public abstract class Dog extends VirtPet {
 
-	public Dog(String nameParam, String descriptionParam, String typeParam, String speciesParam) {
-		super(nameParam, descriptionParam, typeParam, speciesParam);
+	public Dog(String nameParam, String descriptionParam, String typeParam, String speciesParam,  int happinessParam) {
+		super(nameParam, descriptionParam, typeParam, speciesParam, happinessParam);
 
 	}
 
-	int waste;
+	private int waste;
 
-	int getWaste() {
+	private int getWaste() {
 		return waste;
 	}
 
-	public void walk() {
+	protected void walk() {
 		happiness += 10;
 		waste -= 10;
 	}
@@ -22,7 +22,7 @@ public class Dog extends VirtPet {
 		waste += 5;
 	}
 
-	public void cleanCage() {
+	protected void cleanCage() {
 		waste = 0;
 		happiness += 5;
 	}

@@ -1,15 +1,15 @@
 package vpamok2;
 
-public class Cat extends VirtPet {
+public abstract class Cat extends VirtPet {
 
-	public Cat(String nameParam, String descriptionParam, String typeParam, String speciesParam) {
-		super(nameParam, descriptionParam, typeParam, speciesParam);
+	public Cat(String nameParam, String descriptionParam, String typeParam, String speciesParam, int happinessParam) {
+		super(nameParam, descriptionParam, typeParam, speciesParam, happinessParam);
 
 	}
 
-	int waste;
+	private int waste;
 
-	int getWaste() {
+	private int getWaste() {
 		return waste;
 	}
 
