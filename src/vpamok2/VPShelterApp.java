@@ -75,10 +75,12 @@ public class VPShelterApp {
 
 				}
 				String adoptName = input.nextLine();
+				//need to add petMaps like admit pet
 				VirtPet tempAdopt = petShelter.getPets(adoptName);// gets the
 																	// pet for
 																	// the user
 																	// to adopt
+				
 				petShelter.adoptPet(tempAdopt);// removes pet from map
 				writeLine("Thank you for adopting " + adoptName + ". We know you will be pleased with your selection.");
 

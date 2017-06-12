@@ -20,7 +20,8 @@ public class VPShellter {
 	// public void intakePets(String name, VirtPet pet){
 	// petMap.put(pet.name, pet);
 
-	// }
+	// } 
+	//add organic pets to shelter map and organic maps
 	public void intakeOrganicPets(String name, VirtPet pet) {
 		petMap.put(pet.name, pet);
 		if (pet instanceof OrganicCat) {
@@ -30,7 +31,7 @@ public class VPShellter {
 			organicDog.put(pet.name, (OrganicPet) pet);
 		}
 	}
-
+	//add robotic pets to shelter map and robotic maps
 	public void intakeRoboticPets(String name, VirtPet pet) {
 		petMap.put(pet.name, pet);
 		if (pet instanceof RoboticCat) {
@@ -44,10 +45,11 @@ public class VPShellter {
 	public Collection<VirtPet> pets() {
 		return petMap.values();
 	}
-	public Collection<OrganicPet> dogs() {
-		return comboOrganicPet.values();
+	//combo list of organic pets
+	//public Collection<OrganicPet> dogs() {
+		//return comboOrganicPet.values();
 		
-	}
+	//}
 
 	public void playWith(VirtPet petName) {
 		petName.play();
