@@ -1,0 +1,14 @@
+#Virtual Pet Amok
+This app allows the user to care for pets in a shelter. There are organic and robotic cats and dogs. Each pet has a name, description, type and species.
+The app begins by welcoming the user to the shelter.
+The user is able to select from a menu what they would like to do. 
+Based on the user selection the shelter pets hunger, thirst, happiness and waste levels are adjusted. There are also the options to play with, adopt and accept new pets.
+If the user chooses to adopt a pet they are prompted to enter the pets name and the pet is removed from the shelter roster.
+If the user chooses to admit a pet, they are prompted to enter the pets name, description, type and species. This information is added to the pet roster.
+When the user is finished they can select Quit to exit the app.
+
+The creation of the app begins with inputting the details of the animals in the shelter.
+The animals are added to the shelter roster so that there are pets available for the user to interact with.
+A while statement is used to start the interaction with the user. Prompting them to select an action to take.
+The switch/case provides the options available and the methods used as a result of the users selection.
+A tick is added to the end of each interval of the game to adjust the pets care levels.
