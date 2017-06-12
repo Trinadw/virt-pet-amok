@@ -153,11 +153,14 @@ public class VPShelterApp {
 				writeLine("That is not a valid entry");
 				continue;
 			}
+			
+				
+			}
 			petShelter.tickShelter();//adjust waste and happiness
 			System.out.println(petShelter.petMap);// prints shelter map
 	
 		}	
-	}
+	
 
 	public static void writeLine(String message) {
 		System.out.println(message);

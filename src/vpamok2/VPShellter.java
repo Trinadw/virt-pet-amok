@@ -10,7 +10,13 @@ public class VPShellter {
 	Map<String, OrganicPet> organicCat = new HashMap<String, OrganicPet>();
 	Map<String, RoboticPet> roboticCat = new HashMap<String, RoboticPet>();
 	Map<String, RoboticPet> roboticDog = new HashMap<String, RoboticPet>();
+	Map<String, OrganicPet> comboOrganicPet = new HashMap<String, OrganicPet>();
 
+	
+	public void organicPetMap(String name, VirtPet pet){
+		comboOrganicPet.putAll(organicCat);
+		comboOrganicPet.putAll(organicDog);
+	}
 	// public void intakePets(String name, VirtPet pet){
 	// petMap.put(pet.name, pet);
 
@@ -37,6 +43,10 @@ public class VPShellter {
 
 	public Collection<VirtPet> pets() {
 		return petMap.values();
+	}
+	public Collection<OrganicPet> dogs() {
+		return comboOrganicPet.values();
+		
 	}
 
 	public void playWith(VirtPet petName) {

@@ -30,4 +30,10 @@ public class OrganicCat extends Cat implements OrganicPet {
 		happiness += 10;
 	
 	}
+	 boolean isHungry()	{
+			return hunger <25;
+		}
+		boolean isThirsty(){
+			return thirst<25;
+		}
 }
