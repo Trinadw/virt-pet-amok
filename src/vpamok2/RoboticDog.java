@@ -2,24 +2,25 @@ package vpamok2;
 
 public class RoboticDog extends Dog implements RoboticPet {
 	
-	public RoboticDog(String nameParam, String descriptionParam){
-		super(nameParam, descriptionParam);
-	}
+	
 
 	public RoboticDog(String nameParam, String descriptionParam, String typeParam, String speciesParam,
 			int happinessParam, int hungerParam, int thirstParam, int wasteParam, int oilLevelParam, int chargeParam) {
-		super(nameParam, descriptionParam, typeParam, speciesParam, happinessParam, 0, 0, 50, 75, 60);
+		super(nameParam, descriptionParam, typeParam, speciesParam, happinessParam, hungerParam, thirstParam, wasteParam, oilLevelParam, chargeParam);
 		
+	}
+	public RoboticDog(String nameParam, String descriptionParam){
+		super(nameParam, descriptionParam);
 	}
 	
 int oilLevel;//used to increase/decrease. signify needs more
 int batteryLevel;//battery  level, used to increase/decrease signify need charge
 
-int getoilLevel() {
+public int getOilLevel() {
 	return oilLevel;
 }
 
-int getbatteryLevel() {
+public int getBatteryLevel() {
 	return batteryLevel;
 }
 	public void addOil() {
@@ -30,5 +31,9 @@ int getbatteryLevel() {
 		batteryLevel+=10;
 	}
 
-
+void batteryLevel(){
+	batteryLevel=30;
+	
+	
+}
 }

@@ -10,24 +10,43 @@ public class VPShelterApp {
 													// shelter
 													// object
 		// create pet providing name, description, type and species
-		VirtPet albie = new VirtPet("Albie", "happy", "robotic", "dog", 77, 0, 0, 0, 58, 87);
-		VirtPet lewis = new VirtPet("Lewis", "nervous", "robotic", "cat", 67, 0, 0, 0, 63, 59);
-		VirtPet jax = new VirtPet("Jax", "shy", "organic", "cat", 81, 87, 63, 66, 0, 0);
-		VirtPet gonzo = new VirtPet("Gonzo", "loud", "organic", "dog", 67, 85, 66, 75, 0, 0);
-		// adding the pets to the map
+		VirtPet albie = new RoboticDog("Albie", "happy", "robotic", "dog", 77, 0, 0, 0, 58, 87);
 		petShelter.intakeRoboticPets("Albie", albie);
+		VirtPet lewis = new RoboticCat("Lewis", "nervous", "robotic", "cat", 67, 0, 0, 0, 63, 59);
 		petShelter.intakeRoboticPets("Lewis", lewis);
+		VirtPet jax = new OrganicCat("Jax", "shy", "organic", "cat", 81, 87, 63, 66, 0, 0);
 		petShelter.intakeOrganicPets("Jax", jax);
+		VirtPet gonzo = new OrganicDog("Gonzo", "loud", "organic", "dog", 67, 85, 66, 75, 0, 0);
+		// adding the pets to the map
 		petShelter.intakeOrganicPets("Gonzo", gonzo);
 
-		writeLine(
-				"Welcome to John's Virtual Pet Shelter. Here are our current pets: \nName \tDescription \tType \tSpecies \tHappiness \tHunger \tThirst \tWaste Level \tOil Level \tCharge"
-						+ albie + lewis + jax + gonzo);
+		writeLine("Welcome to John's Virtual Pet Shelter. Here are our current pets:");
+
+		writeLine("Name\tHappiness\tType\tSpecies\tHappiness\tHunger\tThirst\tWaste\tOil\tCharge" + albie + lewis + jax + gonzo);
+		writeLine("The shelter litterbox is: "+petShelter.getShelterLitterbox());
 		boolean begin = false;
-		while (!begin) {// will allow the game to continue until the user
-						// selects quit
+		
+		do {// will allow the game to continue until the user
+			// selects quit
+
+if(petShelter.shelterLitterbox<=30)	{
+	writeLine("Please clean the shelter litterbox");
+}
+for (VirtPet pet : petShelter.pets()) {
+	if (pet instanceof Dog) {
+		if (((Dog) pet).getWaste() >= 70) {
+			writeLine("There are dog cages that need to be cleaned.");
+			((Dog) pet).wasteImpact();}}
+			for (VirtPet pet2 : petShelter.pets()) {
+				if (pet2 instanceof Cat) {
+					if (((Cat) pet2).getWaste() >= 70) {
+						writeLine("The cats litterboxes need cleaning.");
+						((Cat) pet2).wasteImpact();}}
+						
+										
+}}
 			writeLine(
-					"What would you like to do next? \n1. Feed the pets \n2. Water the pets \n3. Play with a pet \n4. Adopt a pet \n5. Admit a pet \n6. Walk all dogs \n7. Clean the dog cages \n8. Clean the shelter litterbox \n9. Oil the robotic pets \n10. Charge the robotic pets \n11. Quit");
+					"What would you like to do next? \n1. Feed the pets \n2. Water the pets \n3. Play with a pet \n4. Adopt a pet \n5. Admit a pet \n6. Walk all dogs \n7. Clean the dog cages \n8. Clean the pet litterboxes \n9. Oil the robotic pets \n10. Charge the robotic pets \n11. Clean the shelter litterbox \n12. Quit");
 			int toDo = input.nextInt();
 			input.nextLine();
 			switch (toDo) {
@@ -107,8 +126,7 @@ public class VPShelterApp {
 						OrganicPet admitPets = new OrganicCat(getPetName, getPetDescription);
 						petShelter.intakeOrganicPets(getPetName, (VirtPet) admitPets);
 					}
-					// writeLine("We will try our best to find" + getPetName + "
-					// a new home.");
+	
 				}
 				if (getPetType.equalsIgnoreCase("robotic")) {
 					writeLine("Is this a dog or cat?");
@@ -140,7 +158,7 @@ public class VPShelterApp {
 				break;
 			case 8:
 				petShelter.cleanLitterBoxes();// clean all cat litterboxes
-				writeLine("We appreciate your help cleaning the shelter litter box!");
+				writeLine("We appreciate your help cleaning the pets litter boxes!");
 				break;
 			case 9:
 				petShelter.oilPets();// oil all robotic pets
@@ -150,20 +168,25 @@ public class VPShelterApp {
 				petShelter.chargePets();// charge all the robotic pets
 				writeLine("Thanks for charging our robotic pets!");
 				break;
-
 			case 11:
+				petShelter.cleanShelterLitterBox();
+				writeLine("We appreciate your help cleaning the shelter litter box!");
+			break;
+			case 12:
 				writeLine("Wish you could stay longer. Enjoy your day.");
 				System.exit(0);// allows the user to end the game
+			
 			default:
 				writeLine("That is not a valid entry");
 				continue;
 			}
 
-		}
-		petShelter.tickShelter();// adjust waste and happiness
+		} 
+	while(!begin);								
+		petShelter.tickShelter();// adjust individual pet waste, happiness & shelter litterbox
 		System.out.println(petShelter.petMap);// prints shelter map
-		
-		
+		System.out.println("The shelter litterbox is: " + petShelter.getShelterLitterbox());
+	
 	}
 
 	public static void writeLine(String message) {

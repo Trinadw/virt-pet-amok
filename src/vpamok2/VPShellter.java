@@ -5,6 +5,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class VPShellter {
+	public int shelterLitterbox;
+	
+	 void setShelterLitterbox(){
+		shelterLitterbox=50;
+	}
+	
+	public int getShelterLitterbox(){
+		return shelterLitterbox=50;
+	}
+	public void cleanShelterLitterBox() {
+		shelterLitterbox = 0;
+	}
+	
 	Map<String, VirtPet> petMap = new HashMap<String, VirtPet>();
 	Map<String, OrganicPet> organicDog = new HashMap<String, OrganicPet>();
 	Map<String, OrganicPet> organicCat = new HashMap<String, OrganicPet>();
@@ -63,6 +76,18 @@ public class VPShellter {
 	// method to remove pets when they are adopted
 	public void adoptPet(VirtPet pet) {
 		petMap.remove(pet);
+		if (pet instanceof RoboticDog) {
+			roboticDog.remove(pet.name, pet);
+		}
+		if (pet instanceof RoboticCat) {
+			roboticCat.remove(pet.name, pet);
+		}
+		if (pet instanceof OrganicDog) {
+			organicDog.remove(pet.name, pet);
+		}
+		if (pet instanceof OrganicCat) {
+			organicCat.remove(pet.name, pet);
+		}
 
 	}
 //method to feed organic pets only
@@ -133,7 +158,11 @@ public void walkDogs(){
 	public void tickShelter() {
 		for (VirtPet newTick : petMap.values()) {
 			newTick.tick();
+			shelterLitterbox+=10;
 
 		}
 	}
-}
+	
+	
+	}
+

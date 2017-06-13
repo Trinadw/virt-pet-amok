@@ -12,10 +12,14 @@ public class VirtPet {
 	protected String type;
 	protected String species;
 	protected int waste;
+	protected int hunger;
+	protected int thirst;
+	protected int oilLevel;
+	protected int charge;
 
 	void tick() {
 		happiness -= num.nextInt(5);
-		waste -= num.nextInt(5);
+		waste += num.nextInt(5);
 
 	}
 
@@ -25,8 +29,9 @@ public class VirtPet {
 		description = descriptionParam;
 		type = typeParam;
 		species = speciesParam;
-		happiness = 60;
-		waste=50;
+		happiness = happinessParam;
+		waste=wasteParam;
+		
 	
 		
 	}
@@ -47,11 +52,21 @@ public class VirtPet {
 
 	@Override
 	public String toString() {
-		return "\n" + name + "\t" + description + "\t" + "\t" + type + "\t" + species + "\t" + happiness;
+		return "\n" + name + "\t" + description + "\t" + "\t" + type + "\t" + species + "\t" + happiness + "\t"+ hunger+"\t"+thirst+ "\t"+ waste + "\t"+oilLevel+"\t"+charge;
 	}
 
 	public void play() {
 		happiness += 10;
+		oilLevel-=10;
+		hunger+=10;
+		charge-=10;
 
+	}
+
+	public String getName() {
+		return name;
+	}
+	public int getWaste() {
+		return waste;
 	}
 }
